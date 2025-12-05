@@ -167,19 +167,20 @@ Contact: `heidarzadeh.roozbeh [at] gmail [dot] com`
 ---
 
 Citation
---------
 
-If you use this code or parts of the pipeline, please cite **both**:
+If you use this code or parts of the pipeline, please cite both:
 
-1. Mehrabi T, Heidarzadeh R, *et al.*  
-   Dysregulated key long non-coding RNAs TP53TG1, RFPL1S, DLEU1 in prostate cancer.  
-   *Advances in Cancer Biology – Metastasis*. 2025;13:100132.  
+Mehrabi T, Heidarzadeh R, et al.
+Dysregulated key long non-coding RNAs TP53TG1, RFPL1S, DLEU1 in prostate cancer.
+Advances in Cancer Biology – Metastasis. https://doi.org/10.1016/j.adcanc.2025.100132
 
-2. Heidarzadeh R. (2025).  
-   **heidarzadehroozbeh-cmyk/crpc-wgcna-metastasis-2025**: CRPC WGCNA metastasis pipeline (v1.0.0) [Code]. Zenodo.  
-   https://doi.org/10.5281/zenodo.XXXXXXX
-
-(Replace `XXXXXXX` with the actual Zenodo DOI once the record is minted.)
+Heidarzadeh R. (2025).
+heidarzadehroozbeh-cmyk/crpc-wgcna-metastasis-2025: First public release – CRPC WGCNA metastasis pipeline (v1.0.0) [Code]. Zenodo.
+https://doi.org/10.5281/zenodo.17830034
 
 Code in this repository is released under the MIT License. The underlying expression data (GSE74685) remain subject to the original GEO / authors’ terms of use.
->>>>>>> 91d59e3 (Update README with full CRPC WGCNA description)
+
+
+
+
+
