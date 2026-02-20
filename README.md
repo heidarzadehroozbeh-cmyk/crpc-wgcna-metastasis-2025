@@ -175,7 +175,7 @@ Dysregulated key long non-coding RNAs TP53TG1, RFPL1S, DLEU1 in prostate cancer.
 Advances in Cancer Biology – Metastasis. https://doi.org/10.1016/j.adcanc.2025.100132
 
 Heidarzadeh R. (2025).
-heidarzadehroozbeh-cmyk/crpc-wgcna-metastasis-2025: First public release – CRPC WGCNA metastasis pipeline (v1.0.0) [Code]. Zenodo.
+heidarzadehroozbeh-cmyk/crpc-wgcna-metastasis-2025: First public release – CRPC WGCNA metastasis pipeline (v1.0.0).
 https://doi.org/10.5281/zenodo.17830034
 
 Code in this repository is released under the MIT License. The underlying expression data (GSE74685) remain subject to the original GEO / authors’ terms of use.
