@@ -1,10 +1,8 @@
----
-
 # CRPC WGCNA Metastasis 2025
 
 This repository contains the reproducible R code used in the manuscript:
 
-**Mehrabi T, Heidarzadeh R, *et al.* (2025).** Dysregulated key long non-coding RNAs *TP53TG1*, *RFPL1S*, *DLEU1* in prostate cancer. *Advances in Cancer Biology – Metastasis*, 13:100132.
+(https://doi.org/10.1016/j.adcanc.2025.100132)
 
 The project aims to:
 
