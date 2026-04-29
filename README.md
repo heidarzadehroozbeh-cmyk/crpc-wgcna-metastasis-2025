@@ -28,6 +28,11 @@ This repository contains a fully reproducible **R‑based transcriptomic pipelin
 
 ---
 
+## Abstract
+Castration‑resistant prostate cancer (CRPC) is characterized by aggressive behavior and a high propensity for metastasis, yet the transcriptional programs that drive metastatic progression remain incompletely understood. In this project, we implemented a weighted gene co‑expression network analysis (WGCNA) workflow to identify metastasis‑associated gene modules in CRPC transcriptomic datasets. After rigorous pre‑processing and normalization, co‑expression networks were constructed and modules were correlated with clinical traits, including metastatic status and disease progression. Hub genes within clinically relevant modules were identified based on intramodular connectivity and eigengene‑based metrics. Functional enrichment analyses were performed to link modules to key biological processes and signaling pathways implicated in CRPC progression, such as androgen receptor signaling, EMT, and inflammatory pathways. The pipeline is fully scripted in R with an emphasis on reproducibility and interpretability, providing a modular framework for extending network‑based analyses to additional cohorts and multi‑omics layers.
+
+---
+
 ## 🧬 Workflow Snapshot
 
 ```
