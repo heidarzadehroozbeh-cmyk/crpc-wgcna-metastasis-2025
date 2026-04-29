@@ -31,11 +31,11 @@ This repository contains a fully reproducible **R‑based transcriptomic pipelin
 ## 🧬 Workflow Snapshot
 
 ```
-        ┌────────────────┐
-        │  GEOquery      │
-        │ Download GSE   │
-        └───────┬────────┘
-                │
+      ┌─────────────────┐
+      │  GEOquery       │
+      │ Download GSE    │
+      └───── ──┬────────┘
+               │
       ┌────────▼────────┐
       │ Preprocessing   │
       │  QC + Filtering │
@@ -52,11 +52,11 @@ This repository contains a fully reproducible **R‑based transcriptomic pipelin
       └────────┬────────┘
                │
       ┌────────▼────────┐
-      │ Module–Trait     │
-      │ Correlations     │
+      │ Module–Trait    │
+      │ Correlations    │
       └────────┬────────┘
                │
-      ┌────────▼───────────┐
+      ┌────────▼────────────┐
       │ lncRNA Candidates   │
       │ TP53TG1, RFPL1S,... │
       └─────────────────────┘
@@ -92,7 +92,6 @@ This repository contains a fully reproducible **R‑based transcriptomic pipelin
 
 ## 🖥 Software & Package Versions (Exact)
 
-برای ریپروڈیوسیبل بودن دقیق:
 
 **R version**  
 • R 4.2.3 (2023-03-15)
