@@ -1,115 +1,174 @@
-# CRPC WGCNA Metastasis 2025
+---------------------------------------------------------------------
 
-This repository contains the reproducible R code used in the manuscript:
+# CRPC WGCNA Metastasis Pipeline  
+**Transcriptomic network analysis of metastatic CRPC (GSE74685)**
 
-(https://doi.org/10.1016/j.adcanc.2025.100132)
-
-The project aims to:
-
-* Download and preprocess the public microarray dataset **GSE74685** (castration-resistant prostate cancer metastases).
-* Perform differential expression analysis (**Bone vs Visceral** metastatic sites).
-* Build a WGCNA network and detect co-expression modules.
-* Correlate modules with metastatic site traits.
-* Extract long non-coding RNA (lncRNA) candidates (*TP53TG1*, *RFPL1S*, *DLEU1*).
-* Export gene–module assignments, module–trait correlations, candidate lists, and example figures.
-
-All analyses are implemented in R and organized as a small, self-contained pipeline.
+[![R](https://img.shields.io/badge/R-4.2.0+-276DC3.svg?style=for-the-badge)]()  
+[![WGCNA](https://img.shields.io/badge/WGCNA-1.72--1-4f8bc9?style=for-the-badge)]()  
+[![limma](https://img.shields.io/badge/limma-3.58.1-0096d1?style=for-the-badge)]()  
+[![License: MIT](https://img.shields.io/badge/license-MIT-green?style=for-the-badge)]()  
+[![DOI](https://img.shields.io/badge/DOI-10.1016%2Fj.adcanc.2025.100132-purple?style=for-the-badge)]()  
+[![Zenodo](https://img.shields.io/badge/Zenodo-17830034-blue?style=for-the-badge)]()
 
 ---
 
-## Directory Structure
+## 🔬 Overview
 
-**`crpc-wgcna-metastasis-2025.Rproj`** – RStudio project file (recommended entry point).
+This repository contains a fully reproducible **R‑based transcriptomic pipeline** for:
 
-### `scripts/`
+• Differential gene expression (**Bone vs Visceral metastases**)  
+• **Weighted Gene Co‑expression Network Analysis (WGCNA)**  
+• Module–trait correlation  
+• lncRNA biomarker discovery in metastatic CRPC  
+• Export of reproducible tables + figures used in the manuscript
 
-Main analysis scripts:
-
-* **Script 01_load_packages.R** – Installs and loads packages (*GEOquery*, *Biobase*, *limma*, *WGCNA*, *dynamicTreeCut*, *tidyverse*), sets global options.
-* **Script 02 - download & preprocess GSE74685.R** – Downloads GSE74685, filters, and saves processed data.
-* **Script 03 - DE analysis (Bone vs Visceral).R** – Performs differential expression analysis with limma.
-* **Script 04 - WGCNA network and modules (GSE74685).R** – Builds WGCNA network, detects modules, correlates with traits, exports results.
-* **Script 05 - Extract module genes & lncRNA candidates (GSE74685).R** – Generates candidate gene and lncRNA lists combining DE and WGCNA results.
-* **Optional GPL annotation helper script** – Builds clean annotation tables and identifies lncRNA biotypes.
-
-### `data/`
-
-Processed expression matrices, phenotype tables, and WGCNA objects. Files are regenerable and excluded from version control.
-
-### `results/`
-
-CSV outputs from DE and WGCNA analyses:
-
-* DEG tables
-* Module–trait correlation tables
-* Gene/module/lncRNA candidate lists
-
-### `figures/`
-
-Key plots from the pipeline:
-
-* Sample clustering dendrograms
-* Scale-free topology plots
-* Gene dendrogram with module colours
-* TOM and module–trait heatmaps
-
-### `docs/`
-
-Lightweight documentation, such as platform/GPL annotation files.
+**Dataset:** GSE74685  
+**Study:** Adv Cancer Biol – Metastasis (2025)  
+**Key lncRNAs identified:** *TP53TG1*, *RFPL1S*, *DLEU1*
 
 ---
 
-## Requirements
+## 🧬 Workflow Snapshot
 
-* R ≥ 4.2
-* Packages: `GEOquery`, `Biobase`, `limma`, `WGCNA`, `dynamicTreeCut`, `tidyverse`
-
-All required packages are loaded (and installed if missing) by `scripts/Script 01_load_packages.R`.
+```
+        ┌────────────────┐
+        │  GEOquery      │
+        │ Download GSE   │
+        └───────┬────────┘
+                │
+      ┌────────▼────────┐
+      │ Preprocessing   │
+      │  QC + Filtering │
+      └────────┬────────┘
+               │
+      ┌────────▼────────┐
+      │  limma DEGs     │
+      │ Bone vs Visceral│
+      └────────┬────────┘
+               │
+      ┌────────▼────────┐
+      │     WGCNA       │
+      │ Modules + MEs   │
+      └────────┬────────┘
+               │
+      ┌────────▼────────┐
+      │ Module–Trait     │
+      │ Correlations     │
+      └────────┬────────┘
+               │
+      ┌────────▼───────────┐
+      │ lncRNA Candidates   │
+      │ TP53TG1, RFPL1S,... │
+      └─────────────────────┘
+```
 
 ---
 
-## Running the Pipeline
+## 📁 Repository Structure
 
-1. Clone or download the repository.
-2. Open `crpc-wgcna-metastasis-2025.Rproj` in RStudio.
+**scripts/**  
+• 01_load_packages.R  
+• 02_download_preprocess_GSE74685.R  
+• 03_DE_analysis_Bone_vs_Visceral.R  
+• 04_WGCNA_network_and_modules.R  
+• 05_extract_module_genes_lncRNA_candidates.R  
+
+**data/**  
+• Processed matrices + WGCNA objects (auto-generated)
+
+**results/**  
+• DEGs  
+• module–trait correlations  
+• gene–module assignments  
+• lncRNA candidate lists  
+
+**figures/**  
+• dendrograms  
+• TOM heatmaps  
+• module–trait heatmaps  
+• scale‑free topology plots  
+
+---
+
+## 🖥 Software & Package Versions (Exact)
+
+برای ریپروڈیوسیبل بودن دقیق:
+
+**R version**  
+• R 4.2.3 (2023-03-15)
+
+**CRAN/Bioconductor packages**  
+• GEOquery 2.70.0  
+• Biobase 2.62.0  
+• limma 3.58.1  
+• WGCNA 1.72-1  
+• dynamicTreeCut 1.63-1  
+• tidyverse 2.0.0  
+
+---
+
+## ▶️ Running the Pipeline
+
+1. Clone:
+
+```
+git clone https://github.com/heidarzadehroozbeh-cmyk/crpc-wgcna-metastasis-2025
+```
+
+2. Open RStudio project:
+
+```
+crpc-wgcna-metastasis-2025.Rproj
+```
+
 3. Run scripts in order:
 
-   1. `01_load_packages.R`
-   2. `02 - download & preprocess GSE74685.R`
-   3. `03 - DE analysis (Bone vs Visceral).R`
-   4. `04 - WGCNA network and modules (GSE74685).R`
-   5. `05 - Extract module genes & lncRNA candidates (GSE74685).R`
-4. Outputs will appear in `data/`, `results/`, and `figures/`.
-5. Figures can be directly used in manuscripts or adapted for new analyses.
+```
+01_load_packages.R
+02_download_preprocess_GSE74685.R
+03_DE_analysis_Bone_vs_Visceral.R
+04_WGCNA_network_and_modules.R
+05_extract_module_genes_lncRNA_candidates.R
+```
+
+4. Outputs appear in:  
+`data/`, `results/`, `figures/`
 
 ---
 
-## License
+## 📊 Data Availability
 
-Code is released under the **MIT License**.
-Underlying expression data (**GSE74685**) remain subject to original GEO/authors’ terms.
+Public transcriptomic dataset:
 
----
-
-## Author
-
-**Dr. Roozbeh Heidarzadehpilehrood**
-Human Geneticist – Transcriptomics & ncRNA biomarkers
-**Email:** [heidarzadeh.roozbeh@gmail.com](mailto:heidarzadeh.roozbeh@gmail.com)
+GSE74685  
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE74685
 
 ---
 
-## Citation
+## ✨ Citation
 
-If using this code or parts of the pipeline, cite both:
+**Primary publication:**  
+Mehrabi T, Heidarzadeh R, et al.  
+Advances in Cancer Biology – Metastasis (2025)  
+https://doi.org/10.1016/j.adcanc.2025.100132
 
-1. Mehrabi T, Heidarzadeh R, et al.
-   Dysregulated key long non-coding RNAs *TP53TG1*, *RFPL1S*, *DLEU1* in prostate cancer.
-   *Advances in Cancer Biology – Metastasis*. [https://doi.org/10.1016/j.adcanc.2025.100132](https://doi.org/10.1016/j.adcanc.2025.100132)
-
-2. Heidarzadeh R. (2025).
-   heidarzadehroozbeh-cmyk/crpc-wgcna-metastasis-2025: First public release – CRPC WGCNA metastasis pipeline (v1.0.0).
-   [https://doi.org/10.5281/zenodo.17830034](https://doi.org/10.5281/zenodo.17830034)
+**Software release:**  
+Heidarzadeh R (2025).  
+Zenodo: https://doi.org/10.5281/zenodo.17830034
 
 ---
 
+## 👤 Author
+
+Dr. Roozbeh Heidarzadehpilehrood  
+Human Geneticist – Transcriptomics & ncRNA Biomarkers  
+Email: heidarzadeh.roozbeh@gmail.com
+
+---
+
+## 📄 License
+
+MIT License  
+(Underlying GEO data subject to original terms)
+
+---------------------------------------------------------------------
